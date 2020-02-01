@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 public class Cable : MonoBehaviour {
-    public int cableId;
     public bool isFixed;
     public CableSystem cableSystem { get => GameObject.FindGameObjectWithTag("Manager").GetComponent<CableSystem>(); }
 
@@ -12,7 +11,7 @@ public class Cable : MonoBehaviour {
     }
 
     public void OnBroke() {
-        isFixed = true;
+        isFixed = false;
         cableSystem.Action();
 
         transform.position += Vector3.up;

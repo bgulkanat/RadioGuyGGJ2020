@@ -22,7 +22,7 @@ public class Bass : ActionObject
             bassArea.enabled = true;
             Debug.Log("<color=Red>Action: </color>Bass On!!");
         }
-        else {
+        else if (bassArea.enabled){
             bassArea.enabled = false;
             Debug.Log("<color=Red>Action: </color>Bass Off!!");
         }

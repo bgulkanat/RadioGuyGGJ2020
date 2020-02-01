@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class SlotSystem : MonoBehaviour {
-    public bool[] slots = new bool[4];
+    public Slot[] slots = new Slot[4];
     public List<ActionObject> actionObjects;
 
     public void CheckAll() {
@@ -13,14 +13,10 @@ public class SlotSystem : MonoBehaviour {
     }
 
     public void TriggerObject(bool condition, ActionObject action) {
+        Debug.Log(action.name + ", " + condition);
         if(condition)
             action.Trigger("s+");
         else
             action.Trigger("s-");
-    }
-
-    public void ChangeSlotCondition(int slotID, bool condition) {
-        slots[slotID] = condition;
-        CheckAll();
     }
 }

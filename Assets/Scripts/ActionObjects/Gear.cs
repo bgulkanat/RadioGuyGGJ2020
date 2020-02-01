@@ -22,16 +22,13 @@ public class Gear : ActionObject {
             StartCoroutine(RotateGear());
             Debug.Log("<color=Red>Action: </color>Rotating!!");
         }
-        else {
-            StopAllCoroutines();
-            Debug.Log("<color=Red>Action: </color>Stopped!!");
-        }
     }
 
     IEnumerator RotateGear() {
-        while (true) {
+        while (slot) {
             transform.Rotate(0, rotateSpeed, 0);
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("<color=Red>Action: </color>Stopped!!");
     }
 }

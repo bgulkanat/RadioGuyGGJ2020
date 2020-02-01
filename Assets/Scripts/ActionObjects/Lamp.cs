@@ -29,16 +29,13 @@ public class Lamp : ActionObject
             StartCoroutine(RotateGear());
             Debug.Log("<color=Red>Action: </color>Rotating!!");
         }
-        else {
-            StopAllCoroutines();
-            Debug.Log("<color=Red>Action: </color>Stopped!!");
-        }
     }
 
     IEnumerator RotateGear() {
-        while (true) {
+        while (slot && cable) {
             transform.Rotate(0, 1, 0);
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("<color=Red>Action: </color>Stopped!!");
     }
 }

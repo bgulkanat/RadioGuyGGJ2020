@@ -12,13 +12,15 @@ public class CableSystem : MonoBehaviour
     public int sequenceSteps;
 
     private void Start() {
-        StartCoroutine(BrakeSequence());
+        //StartCoroutine(BrakeSequence());
     }
 
     public bool Check {
         get {
-            foreach (var cable in cables)
+            foreach (var cable in cables) {
+                Debug.Log(cable.isFixed);
                 if (!cable.isFixed) return false;
+            }
             return true;
         }
     } 
