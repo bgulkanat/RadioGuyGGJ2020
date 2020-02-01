@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gear : ActionObject {
-
-    public float rotateSpeed = 1;
+public class Bass : ActionObject
+{
+    public BoxCollider boxCollider { get => GetComponent<BoxCollider>(); }
     public override void Trigger(string command) {
         switch (command) {
             case "s+":
@@ -19,19 +19,11 @@ public class Gear : ActionObject {
 
     public override void Action() {
         if (slot) {
-            StartCoroutine(RotateGear());
-            Debug.Log("<color=Red>Action: </color>Rotating!!");
+            Debug.Log("<color=Red>Action: </color>Bass On!!");
         }
         else {
-            StopAllCoroutines();
-            Debug.Log("<color=Red>Action: </color>Stopped!!");
+            Debug.Log("<color=Red>Action: </color>Bass Off!!");
         }
     }
 
-    IEnumerator RotateGear() {
-        while (true) {
-            transform.Rotate(0, rotateSpeed, 0);
-            yield return new WaitForFixedUpdate();
-        }
-    }
 }

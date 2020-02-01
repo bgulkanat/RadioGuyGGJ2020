@@ -238,6 +238,16 @@ PrefabInstance:
       propertyPath: mouseSensitivity
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 9004912786505337125, guid: 60e942bb01972284e837c89963c68cc3,
+        type: 3}
+      propertyPath: JumpForce
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004912786505337125, guid: 60e942bb01972284e837c89963c68cc3,
+        type: 3}
+      propertyPath: BassJumpForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9036188564967190311, guid: 60e942bb01972284e837c89963c68cc3,
         type: 3}
       propertyPath: m_Name
@@ -989,6 +999,25 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -3177030779957237861, guid: 1aa4f378a47581d4fba5f6e096b8100e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa4f378a47581d4fba5f6e096b8100e, type: 3}
+--- !u!1 &1080472512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7211421463703368669, guid: b2b0960e29f7cd341878835babc9385f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1672507316640875138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1080472513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080472512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.35, y: 0.46, z: 1.35}
+  m_Center: {x: -0.7, y: 0.3, z: -0.9}
 --- !u!4 &1090713799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8133440846577057841, guid: 1aa4f378a47581d4fba5f6e096b8100e,
