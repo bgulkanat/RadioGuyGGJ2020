@@ -2,11 +2,20 @@
 
 public class Cable : MonoBehaviour {
     public int cableId;
+    public bool isFixed;
     public CableSystem cableSystem { get => GameObject.FindGameObjectWithTag("Manager").GetComponent<CableSystem>(); }
 
     public void OnFixed() {
-        cableSystem.cables[cableId] = true;
+        isFixed = true;
         cableSystem.Action();
         Debug.Log(string.Format("<color=grey>Cable: </color> {0} is fixed", gameObject.name));
+    }
+
+    public void OnBroke() {
+        isFixed = true;
+        cableSystem.Action();
+
+        transform.position += Vector3.up;
+        Debug.Log(string.Format("<color=grey>Cable: </color> {0} is broked", gameObject.name));
     }
 }

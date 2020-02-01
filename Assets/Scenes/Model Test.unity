@@ -419,6 +419,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.68, z: 1.54}
   m_Center: {x: -0.71, y: 0, z: -1.97}
+--- !u!114 &334913908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8296172668560706909, guid: 96778f88344e7ab4d8a2afd4223e5b79,
+    type: 3}
+  m_PrefabInstance: {fileID: 334913904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334913906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570faaa6f04d38945a13c94bf4d7aad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &337080413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,8 +1055,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f62a0bfe5116241be021b93aa2d0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cables: 0000
+  cables:
+  - {fileID: 8296172668560706910}
+  - {fileID: 334913908}
   actionObject: {fileID: 19789318}
+  breakTimer: 85
+  breakStep: 0
+  sequenceSteps: 0
 --- !u!1 &1202527101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,3 +2069,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.68, z: 1.54}
   m_Center: {x: -0.71, y: 0, z: -1.97}
+--- !u!114 &8296172668560706910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8296172668560706909, guid: 96778f88344e7ab4d8a2afd4223e5b79,
+    type: 3}
+  m_PrefabInstance: {fileID: 6039571265760653040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668560706908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570faaa6f04d38945a13c94bf4d7aad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
