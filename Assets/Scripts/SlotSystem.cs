@@ -6,10 +6,14 @@ public class SlotSystem : MonoBehaviour {
     public List<ActionObject> actionObjects;
 
     public void CheckAll() {
-
-        TriggerObject(slots[0] && slots[1], actionObjects[0]);
-        TriggerObject(slots[0] && slots[2], actionObjects[1]);
-        TriggerObject(slots[0] && slots[3], actionObjects[2]);
+        string lo="";
+        for (int i = 0; i < slots.Length; i++) {
+            lo += slots[i].isFull;
+        }
+        Debug.Log(lo);
+        TriggerObject(slots[0].isFull && slots[1].isFull, actionObjects[0]);
+        TriggerObject(slots[0].isFull/* && slots[2].isFull*/, actionObjects[1]);
+        TriggerObject(slots[0].isFull && slots[3].isFull, actionObjects[2]);
     }
 
     public void TriggerObject(bool condition, ActionObject action) {

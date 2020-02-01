@@ -5,6 +5,8 @@ using UnityEngine;
 public class Lamp : ActionObject
 {
     public bool cable;
+    public GameState gameState { get => GameObject.FindGameObjectWithTag("Manager").GetComponent<GameState>(); }
+    
     public override void Trigger(string command) {
         switch (command) {
             case "s+":
@@ -25,17 +27,19 @@ public class Lamp : ActionObject
     }
 
     public override void Action() {
-        if (slot && cable) {
-            StartCoroutine(RotateGear());
-            Debug.Log("<color=Red>Action: </color>Rotating!!");
+        if (slot/* && cable*/) {
+            OnStart();
         }
     }
 
-    IEnumerator RotateGear() {
-        while (slot && cable) {
-            transform.Rotate(0, 1, 0);
-            yield return new WaitForFixedUpdate();
-        }
-        Debug.Log("<color=Red>Action: </color>Stopped!!");
+    public override void OnStop() {
+        gameState.rageMultiplier = 1;
+        Debug.Log("<color=Red>Action: </color>Lamp off!!");
     }
+    public override void OnStart() {
+        gameState.StartRage();
+        gameState.rageMultiplier = -1;
+        Debug.Log("<color=Red>Action: </color>Lamp on!!");
+    }
+
 }

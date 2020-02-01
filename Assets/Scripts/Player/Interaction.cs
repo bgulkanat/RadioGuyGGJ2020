@@ -70,7 +70,7 @@ public class Interaction : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("<color=gray>Raycast: </color> collide with " + other.name);
+        Debug.Log("<color=grey>Raycast: </color> collide with " + other.name);
 
         // Çarpışma Slot ile olmuşsa..
         if (other.gameObject.layer == 9 && carriedObject != null && !other.gameObject.GetComponent<Slot>().isFull)

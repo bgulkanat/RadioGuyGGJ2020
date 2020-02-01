@@ -18,17 +18,22 @@ public class Gear : ActionObject {
     }
 
     public override void Action() {
-        if (slot) {
-            StartCoroutine(RotateGear());
-            Debug.Log("<color=Red>Action: </color>Rotating!!");
-        }
+        if (slot)
+            OnStart();
     }
 
+    public override void OnStart() {
+        StartCoroutine(RotateGear());
+        Debug.Log("<color=Red>Action: </color>Rotating!!");
+    }
+    public override void OnStop() {
+        Debug.Log("<color=Red>Action: </color>Stopped!!");
+    }
     IEnumerator RotateGear() {
         while (slot) {
             transform.Rotate(0, rotateSpeed, 0);
             yield return new WaitForFixedUpdate();
         }
-        Debug.Log("<color=Red>Action: </color>Stopped!!");
+        OnStop();
     }
 }
