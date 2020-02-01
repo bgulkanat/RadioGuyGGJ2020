@@ -33,12 +33,10 @@ public class Lamp : ActionObject
     }
 
     public override void OnStop() {
-        gameState.rageMultiplier = 1;
         Debug.Log("<color=Red>Action: </color>Lamp off!!");
     }
     public override void OnStart() {
         gameState.StartRage();
-        gameState.rageMultiplier = -1;
         Debug.Log("<color=Red>Action: </color>Lamp on!!");
     }
 
