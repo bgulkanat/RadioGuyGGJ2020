@@ -6,15 +6,39 @@ public class Lamp : ActionObject
 {
     public bool cable;
     public override void Trigger(string command) {
-        if (command == "s")
-            slot = true;
-        else if (command == "c")
-            cable = true;
-        Check(slot, cable);
+        switch (command) {
+            case "s+":
+                slot = true;
+                break;
+            case "s-":
+                slot = false;
+                break;
+            case "c+":
+                cable = true;
+                break;
+            case "c-":
+                cable = false;
+                break;
+
+        }
+        Action();
     }
 
     public override void Action() {
-        transform.Rotate(30, 0, 0);
-        Debug.Log("<color=Red>Action: </color>Rotating!!");
+        if (slot && cable) {
+            StartCoroutine(RotateGear());
+            Debug.Log("<color=Red>Action: </color>Rotating!!");
+        }
+        else {
+            StopAllCoroutines();
+            Debug.Log("<color=Red>Action: </color>Stopped!!");
+        }
+    }
+
+    IEnumerator RotateGear() {
+        while (true) {
+            transform.Rotate(0, 1, 0);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

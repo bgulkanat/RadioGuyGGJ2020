@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
 public class Cable : MonoBehaviour {
-    public bool isFixed;
-    public ActionObject actionObject;
+    public int cableId;
+    public CableSystem cableSystem { get => GameObject.FindGameObjectWithTag("Manager").GetComponent<CableSystem>(); }
 
     public void OnFixed() {
-        isFixed = true;
-        actionObject.Trigger("c");
-        Debug.Log("<color=grey>Cable: </color> is fixed");
+        cableSystem.cables[cableId] = true;
+        cableSystem.Action();
+        Debug.Log(string.Format("<color=grey>Cable: </color> {0} is fixed", gameObject.name));
     }
 }

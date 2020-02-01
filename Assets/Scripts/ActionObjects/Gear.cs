@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class Gear : ActionObject {
 
-    public float rotateSpeed = 3;
+    public float rotateSpeed = 1;
     public override void Trigger(string command) {
-        if (command == "s")
-            slot = true;
-        Check(slot);
+        Debug.Log("LL" + command);
+        switch (command) {
+            case "s+":
+                slot = true;
+                break;
+            case "s-":
+                slot = false;
+                break;
+        }
+        Action();
     }
 
     public override void Action() {
-        Debug.Log("Rotate");
-        StartCoroutine(RotateGear());
-        Debug.Log("<color=Red>Action: </color>Rotating!!");
+        if (slot) {
+            StartCoroutine(RotateGear());
+            Debug.Log("<color=Red>Action: </color>Rotating!!");
+        }
+        else {
+            StopAllCoroutines();
+            Debug.Log("<color=Red>Action: </color>Stopped!!");
+        }
     }
 
     IEnumerator RotateGear() {
