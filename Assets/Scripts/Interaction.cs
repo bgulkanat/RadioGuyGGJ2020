@@ -71,7 +71,7 @@ public class Interaction : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         Debug.Log("<color=gray>Raycast: </color> collide with " + other.name);
-        if (other.gameObject.layer == 9 && !other.gameObject.GetComponent<Slot>().isFull)
+        if (other.gameObject.layer == 9 && carriedObject != null && !other.gameObject.GetComponent<Slot>().isFull)
             PlaceObject(other.gameObject.transform);
     }
 }

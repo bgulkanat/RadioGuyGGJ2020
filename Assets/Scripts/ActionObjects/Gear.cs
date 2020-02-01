@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gear : ActionObject {
+
+    public float rotateSpeed = 3;
     public override void Trigger(string command) {
         if (command == "s")
             slot = true;
@@ -17,7 +19,7 @@ public class Gear : ActionObject {
 
     IEnumerator RotateGear() {
         while (true) {
-            transform.Rotate(5, 0, 0);
+            transform.Rotate(0, rotateSpeed, 0);
             yield return new WaitForFixedUpdate();
         }
     }
