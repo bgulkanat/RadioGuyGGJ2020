@@ -10,7 +10,7 @@ public class ActionObject : MonoBehaviour {
 
     public virtual void Check(params bool[] keys) {
         foreach (var i in keys) {
-            if (!i) break;
+            if (!i) return;
         }
         Action();
     }

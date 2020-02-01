@@ -7,7 +7,7 @@ public class Gear : ActionObject
     public override void Trigger(string command) {
         if (command == "s")
             slot = true;
-        Check();
+        Check(slot);
     }
 
     public override void Action() {
