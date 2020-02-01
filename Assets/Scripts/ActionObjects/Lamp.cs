@@ -21,24 +21,23 @@ public class Lamp : ActionObject
             case "c-":
                 cable = false;
                 break;
-
         }
         Action();
     }
 
     public override void Action() {
-        if (slot/* && cable*/) {
+        if (slot && cable) {
             OnStart();
         }
     }
 
     public override void OnStop() {
-        gameState.rageMultiplier = 1;
+        gameState.isIncreasing = true;
         Debug.Log("<color=Red>Action: </color>Lamp off!!");
     }
     public override void OnStart() {
         gameState.StartRage();
-        gameState.rageMultiplier = -1;
+        gameState.isIncreasing = false;
         Debug.Log("<color=Red>Action: </color>Lamp on!!");
     }
 
