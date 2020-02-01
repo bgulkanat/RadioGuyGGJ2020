@@ -54,12 +54,12 @@ public class ObjectCarry : MonoBehaviour {
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(raySource.position, raySource.TransformDirection(Vector3.forward), out hit, maxHitDistance, layer)) {
             Debug.DrawRay(raySource.position, raySource.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-            Debug.Log("<color=Green>Carrier: </color>Hit on: " + hit.collider.gameObject.name);
+            Debug.Log("<color=cyan>Raycast: </color>Hit on: " + hit.collider.gameObject.name);
             return hit.collider.gameObject.transform;
         }
         else {
             Debug.DrawRay(raySource.position, raySource.TransformDirection(Vector3.forward) * 1000, Color.red);
-            Debug.Log("<color=Green>Carrier: </color>Did not Hit");
+            Debug.Log("<color=cyan>Raycast: </color>Did not Hit");
             return null;
 
         }

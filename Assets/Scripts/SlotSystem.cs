@@ -9,4 +9,9 @@ public class SlotSystem : MonoBehaviour {
         if (slots[0] && slots[1])
             actionObjects[0].Trigger("s");
     }
+
+    public void ChangeSlotCondition(int slotID, bool condition) {
+        slots[slotID] = condition;
+        CheckAll();
+    }
 }
