@@ -6,15 +6,17 @@ public class SlotSystem : MonoBehaviour {
     public List<ActionObject> actionObjects;
 
     public void CheckAll() {
-        if (slots[0] && slots[1])
-            actionObjects[0].Trigger("s+");
-        else
-            actionObjects[0].Trigger("s-");
 
-        if (slots[0] && slots[2])
-            actionObjects[1].Trigger("s+");
+        TriggerObject(slots[0] && slots[1], actionObjects[0]);
+        TriggerObject(slots[0] && slots[2], actionObjects[1]);
+        TriggerObject(slots[0] && slots[3], actionObjects[2]);
+    }
+
+    public void TriggerObject(bool condition, ActionObject action) {
+        if(condition)
+            action.Trigger("s+");
         else
-            actionObjects[1].Trigger("s-");
+            action.Trigger("s-");
     }
 
     public void ChangeSlotCondition(int slotID, bool condition) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bass : ActionObject
 {
-    public BoxCollider boxCollider { get => GetComponent<BoxCollider>(); }
+    public BoxCollider bassArea { get => GetComponent<BoxCollider>(); }
     public override void Trigger(string command) {
         switch (command) {
             case "s+":
@@ -19,9 +19,11 @@ public class Bass : ActionObject
 
     public override void Action() {
         if (slot) {
+            bassArea.enabled = true;
             Debug.Log("<color=Red>Action: </color>Bass On!!");
         }
         else {
+            bassArea.enabled = false;
             Debug.Log("<color=Red>Action: </color>Bass Off!!");
         }
     }
