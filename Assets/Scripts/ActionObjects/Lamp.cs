@@ -13,7 +13,6 @@ public class Lamp : ActionObject
         Check(slot, cable);
     }
 
-
     public override void Action() {
         transform.Rotate(30, 0, 0);
         Debug.Log("<color=Red>Action: </color>Rotating!!");

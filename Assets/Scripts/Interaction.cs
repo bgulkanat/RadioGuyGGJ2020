@@ -13,6 +13,7 @@ public class Interaction : MonoBehaviour {
 
     private void Update() {
         if (Input.GetButtonDown("Fire1")) {
+            
             var cable = Target(cableLayer);
             if (cable != null)
                 cable.GetComponent<Cable>().OnFixed();

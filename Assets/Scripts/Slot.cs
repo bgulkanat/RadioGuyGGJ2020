@@ -6,7 +6,7 @@ public class Slot : MonoBehaviour {
     public SlotSystem slotSystem;
 
     private void Awake() {
-        slotSystem = GameObject.FindGameObjectWithTag("SlotSystem").GetComponent<SlotSystem>();
+        slotSystem = GameObject.FindGameObjectWithTag("Manager").GetComponent<SlotSystem>();
     }
 
     public void OnPlace() {

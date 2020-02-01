@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gear : ActionObject
-{
+public class Gear : ActionObject {
     public override void Trigger(string command) {
         if (command == "s")
             slot = true;
@@ -11,7 +10,15 @@ public class Gear : ActionObject
     }
 
     public override void Action() {
-        transform.Rotate(30, 0, 0);
+        Debug.Log("Rotate");
+        StartCoroutine(RotateGear());
         Debug.Log("<color=Red>Action: </color>Rotating!!");
+    }
+
+    IEnumerator RotateGear() {
+        while (true) {
+            transform.Rotate(5, 0, 0);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }
