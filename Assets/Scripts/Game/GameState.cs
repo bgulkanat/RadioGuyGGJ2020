@@ -26,7 +26,6 @@ public class GameState : MonoBehaviour {
     }
 
     private void Update() {
-        Debug.Log(cableSystem.Check);
         if (rageOn) {
             isRageIncreasing = !cableSystem.Check;
 
