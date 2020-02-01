@@ -11,8 +11,8 @@ public class GameState : MonoBehaviour {
     public bool isRageIncreasing;
     public float rage;
     public float maxRage;
-    public float rageIncreaseSpeed = 1;
-    public float rageDecreaseSpeed = 1;
+    public float rageIncreaseMultiplier;
+    public float rageDecreaseMultiplier;
 
     [Header("Cable")]
     public float breakTimer;
@@ -22,23 +22,25 @@ public class GameState : MonoBehaviour {
 
     public void StartRage() {
         uiHandler.SetMaxRage(maxRage);
+        StartCoroutine(BreakSequence());
         rageOn = true;
     }
 
     private void Update() {
         if (rageOn) {
-            isRageIncreasing = !cableSystem.Check;
-
             if (isRageIncreasing)
-                rage = Mathf.Clamp(rage += rageIncreaseSpeed * Time.deltaTime, 0, maxRage) ;
-            else {
-                rage = Mathf.Clamp(rage -= rageDecreaseSpeed * Time.deltaTime, 0, maxRage);
+                rage += Mathf.Clamp(rageIncreaseMultiplier, 0, maxRage) * Time.deltaTime;
+            else
+                rage += Mathf.Clamp(rageDecreaseMultiplier, 0, maxRage) * Time.deltaTime;
 
-                timer -= Time.deltaTime;
-                if (timer <= 0 && cableSystem.Check)
-                    BreakSequence();
-            }
             uiHandler.SetRage(rage);
+
+            timer -= Time.deltaTime;
+            if (timer < breakTimer) {
+                BreakSequence();
+            }
+
+
 
             if (rage >= maxRage)
                 GameOver();
@@ -46,17 +48,14 @@ public class GameState : MonoBehaviour {
     }
 
     void BreakSequence() {
-        timer = breakTimer;
         if (breakStep < sequenceSteps) {
             cableSystem.BreakSequence(breakStep);
             breakStep++;
         }
         else {
-            cableSystem.Break((int)UnityEngine.Random.Range(0, 4));
             breakTimer = Mathf.Lerp(breakTimer, 10, Time.fixedDeltaTime);
             Debug.Log(breakTimer);
         }
-        isRageIncreasing = true;
     }
 
     private void GameOver() {
