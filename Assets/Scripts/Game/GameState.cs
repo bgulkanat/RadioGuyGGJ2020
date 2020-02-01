@@ -8,9 +8,11 @@ public class GameState : MonoBehaviour {
 
     [Header("Rage")]
     public bool rageOn=false;
+    public bool isRageIncreasing;
     public float rage;
     public float maxRage;
-    public float rageMultiplier = 1;
+    public float rageIncreaseMultiplier;
+    public float rageDecreaseMultiplier;
 
     public void StartRage() {
         uiHandler.SetMaxRage(maxRage);
@@ -19,11 +21,13 @@ public class GameState : MonoBehaviour {
 
     private void Update() {
         if (rageOn) {
-            rage += rageMultiplier * Time.deltaTime;
-            rage = Mathf.Clamp(rage, 0, maxRage);
-            uiHandler.SetRage(rage);
+            if (isRageIncreasing)
+                rage += Mathf.Clamp(rageIncreaseMultiplier, 0, maxRage) * Time.deltaTime;
+            else
+                rage += Mathf.Clamp(rageDecreaseMultiplier, 0, maxRage) * Time.deltaTime;
 
-            if (rage >= maxRage)
+            uiHandler.SetRage(rage);
+        if (rage >= maxRage)
                 GameOver();
         }
     }
