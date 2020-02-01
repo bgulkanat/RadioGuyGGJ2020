@@ -1217,9 +1217,6 @@ MonoBehaviour:
   - {fileID: 8296172668560706910}
   - {fileID: 334913908}
   actionObject: {fileID: 19789318}
-  breakTimer: 85
-  breakStep: 0
-  sequenceSteps: 0
 --- !u!114 &1164922415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,9 +1243,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageOn: 0
+  isRageIncreasing: 0
   rage: 0
   maxRage: 10
-  rageMultiplier: 1
+  rageIncreaseMultiplier: 0
+  rageDecreaseMultiplier: 0
+  breakTimer: 0
+  breakStep: 0
+  sequenceSteps: 3
 --- !u!1 &1202527101
 GameObject:
   m_ObjectHideFlags: 0
