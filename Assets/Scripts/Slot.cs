@@ -12,12 +12,13 @@ public class Slot : MonoBehaviour {
     public void OnPlace() {
         isFull = true;
         slotSystem.slots[slotID] = isFull;
-        Debug.Log("Slot filled");
+        
+        Debug.Log("<color=Blue>Slot: </color>filled");
     }
 
     public void OnUnplace() {
         isFull = false;
         slotSystem.slots[slotID] = isFull;
-        Debug.Log("Slot emptied");
+        Debug.Log("<color=Blue>Slot: </color>emptied");
     }
 }

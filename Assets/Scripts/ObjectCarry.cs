@@ -11,7 +11,7 @@ public class ObjectCarry : MonoBehaviour {
     public Transform raySource;
 
     private void Update() {
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButtonDown("Fire1")) {
             if (carriedObject == null) {
                 var target = Target(portableObject);
                 if (target != null)
@@ -33,7 +33,7 @@ public class ObjectCarry : MonoBehaviour {
         carriedObject.transform.localScale /= 4;
         if (carriedObject.GetComponent<PortableObject>().isPlaced)
             carriedObject.GetComponent<PortableObject>().Unplace();
-        Debug.Log("Hold the " + target.name);
+        Debug.Log("<color=Green>Carrier: </color>Hold the " + target.name);
     }
 
     // Nesneyi slota yerleştir
@@ -41,7 +41,7 @@ public class ObjectCarry : MonoBehaviour {
         carriedObject.SetParent(target);
         carriedObject.transform.localPosition = Vector3.zero;
         carriedObject.transform.localScale *= 4;
-        Debug.Log(string.Format("Place the <color=Green>{0}</color> to the <color=Blue>{1}</color>"
+        Debug.Log(string.Format("<color=Green>Carrier: </color>Place the <color=magenta>{0}</color> to the <color=Blue>{1}</color>"
             , carriedObject.name, target.name));
 
 
@@ -54,12 +54,12 @@ public class ObjectCarry : MonoBehaviour {
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(raySource.position, raySource.TransformDirection(Vector3.forward), out hit, maxHitDistance, layer)) {
             Debug.DrawRay(raySource.position, raySource.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-            Debug.Log("Hit on: " + hit.collider.gameObject.name);
+            Debug.Log("<color=Green>Carrier: </color>Hit on: " + hit.collider.gameObject.name);
             return hit.collider.gameObject.transform;
         }
         else {
             Debug.DrawRay(raySource.position, raySource.TransformDirection(Vector3.forward) * 1000, Color.red);
-            Debug.Log("Did not Hit");
+            Debug.Log("<color=Green>Carrier: </color>Did not Hit");
             return null;
 
         }

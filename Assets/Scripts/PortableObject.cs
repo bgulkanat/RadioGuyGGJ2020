@@ -8,13 +8,13 @@ public class PortableObject : MonoBehaviour {
         isPlaced = true;
         placedSlot = slot;
         placedSlot.OnPlace();
-        Debug.Log(string.Format("Portable Placed to {0}", placedSlot.name));
+        Debug.Log(string.Format("<color=magenta>Portable: </color>Portable Placed to {0}", placedSlot.name));
     }
-
+    
     public void Unplace() {
         isPlaced = false;
         placedSlot.OnUnplace();
-        Debug.Log(string.Format("Portable unplaced from {0}", placedSlot.name));
+        Debug.Log(string.Format("<color=magenta>Portable: </color>Portable unplaced from {0}", placedSlot.name));
 
         placedSlot = null;
     }
