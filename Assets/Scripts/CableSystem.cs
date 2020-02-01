@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CableSystem : MonoBehaviour
-{
+public class CableSystem : MonoBehaviour {
     public Cable[] cables;
     public ActionObject actionObject;
 
-    public float breakTimer;
-    public int breakStep;
-    public int sequenceSteps;
-
-    private void Start() {
-        //StartCoroutine(BrakeSequence());
-    }
 
     public bool Check {
         get {
@@ -23,7 +15,17 @@ public class CableSystem : MonoBehaviour
             }
             return true;
         }
-    } 
+    }
+
+    public void BreakSequence(int breakStep) {
+        switch (breakStep) {
+            case 0:
+                Break(cables[0]);
+                break;
+            default:
+                break;
+        }
+    }
 
     public void Action() {
         if (Check)
@@ -32,29 +34,9 @@ public class CableSystem : MonoBehaviour
             actionObject.Trigger("c-");
     }
 
-    IEnumerator BrakeSequence() {
-        while (true) {
-            if (breakStep < sequenceSteps)
-                switch (breakStep) {
-                    case 0:
-                        Brake(cables[0]);
-                        break;
-                    default:
-                        break;
-                }
-            else {
-                breakTimer = Mathf.Lerp(breakTimer, 10, Time.fixedDeltaTime);
-                Debug.Log(breakTimer);
-
-            }
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    public void Brake(params Cable[] cablesToBroke) {
-        foreach(var cable in cablesToBroke) {
+    public void Break(params Cable[] cablesToBroke) {
+        foreach (var cable in cablesToBroke) {
             cable.OnBroke();
         }
-        breakStep++;
     }
 }
